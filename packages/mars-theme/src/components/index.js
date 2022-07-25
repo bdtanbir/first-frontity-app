@@ -6,6 +6,9 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
+import GithubUsers from "./GithubUsers";
+import { useTransition, animated } from 'react-spring';
+
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -18,6 +21,12 @@ import PageError from "./page-error";
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+
+  const transitions = useTransition(state.router.link, {}, {
+    from: { opacity: 0, display: 'none' },
+    enter: { opacity: 1 },
+    leave: { opacity: 0, display: 'none' }
+  });
 
   return (
     <>
@@ -37,15 +46,26 @@ const Theme = ({ state }) => {
         <Header />
       </HeadContainer>
 
+		<Main>
+			{/* search github username */}
+			<GithubUsers />
+		</Main>
+
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
       <Main>
-        <Switch>
-          <Loading when={data.isFetching} />
-          <List when={data.isArchive} />
-          <Post when={data.isPostType} />
-          <PageError when={data.isError} />
-        </Switch>
+
+
+        {/* {transitions.map(( props, i ) => (
+			<animated.div style={props} key={i}> */}
+				<Switch>
+					<Loading when={data.isFetching} />
+					<List when={data.isArchive} />
+					<Post when={data.isPostType} />
+					<PageError when={data.isError} />
+				</Switch>
+			{/* </animated.div>
+		))} */}
       </Main>
     </>
   );
@@ -70,7 +90,7 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1f38c5;
+  background-color: #ff0000;
 `;
 
 const Main = styled.div`

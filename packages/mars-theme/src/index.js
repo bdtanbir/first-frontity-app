@@ -25,6 +25,8 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      githubUserName: '',
+      result: []
     },
   },
 
@@ -39,6 +41,23 @@ const marsTheme = {
       },
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
+      },
+      fetchGithubHandler: ({ state, actions }) => {
+        console.log('hello from fetch');
+        // const result = await fetch(`https://api.github.com/search/users?q=${state.theme.githubUserName}`);
+        fetch(`https://api.github.com/search/users?q=${state.theme.githubUserName}`)
+        .then(response => {
+            return response.json()
+            // results = 
+        }).then((actualData) => {
+         //    console.log(actualData.items)
+         //    setResult(actualData.items)
+         state.theme.result = actualData.items;
+            console.log(state.theme.result)
+        })
+        .catch(error => {
+            console.error(error.message)
+        })
       },
     },
   },

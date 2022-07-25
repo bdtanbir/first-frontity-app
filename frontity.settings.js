@@ -2,8 +2,8 @@ const settings = {
   "name": "first-frontity-app",
   "state": {
     "frontity": {
-      "url": "https://test.frontity.org",
-      "title": "Test Frontity Blog",
+      "url": "http://test-plugins.test",
+      "title": "ImDeveloper",
       "description": "WordPress installation for Frontity development"
     }
   },
@@ -18,8 +18,8 @@ const settings = {
               "/"
             ],
             [
-              "Nature",
-              "/category/nature/"
+              "Hello",
+              "/tag/hello/"
             ],
             [
               "Travel",
@@ -31,12 +31,12 @@ const settings = {
             ],
             [
               "About Us",
-              "/about-us/"
+              "/about/"
             ]
           ],
           "featured": {
-            "showOnList": false,
-            "showOnPost": false
+            "showOnList": true,
+            "showOnPost": true
           }
         }
       }
@@ -45,7 +45,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "https://test.frontity.org"
+          "url": "http://test-plugins.test/"
         }
       }
     },
