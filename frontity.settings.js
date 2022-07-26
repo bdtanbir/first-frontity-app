@@ -3,8 +3,8 @@ const settings = {
   "state": {
     "frontity": {
       "url": "http://test-plugins.test",
-      "title": "ImDeveloper",
-      "description": "WordPress installation for Frontity development"
+      "title": "Reading.",
+      "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
     }
   },
   "packages": [
@@ -45,7 +45,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "http://test-plugins.test/"
+          "url": "https://test.frontity.org/"
         }
       }
     },

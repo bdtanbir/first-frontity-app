@@ -44,9 +44,9 @@ const NavContainer = styled.nav`
 
 const NavItem = styled.div`
   padding: 0;
-  margin: 0 16px;
+  margin: 0 10px;
   color: #fff;
-  font-size: 0.9em;
+  font-size: 12px;
   box-sizing: border-box;
   flex-shrink: 0;
 
@@ -55,9 +55,19 @@ const NavItem = styled.div`
     line-height: 2em;
     border-bottom: 2px solid;
     border-bottom-color: transparent;
+    text-transform: uppercase;
+    color: #222222;
+    letter-spacing: 1px;
+    padding: 0 8px 3px 8px;
+    transition: .2s;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
     /* Use for semantic approach to style the current link */
     &[aria-current="page"] {
-      border-bottom-color: #fff;
+      border-bottom-color: #f47d00;
+      // font-weight: 700;
+      color: #f47d00;
     }
   }
 

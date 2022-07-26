@@ -1,4 +1,4 @@
-import { connect, styled } from "frontity";
+import { connect, styled, style } from "frontity";
 import Link from "../link";
 import FeaturedMedia from "../featured-media";
 
@@ -16,16 +16,17 @@ const Item = ({ state, item }) => {
 
   return (
     <article>
-      <Link link={item.link}>
+      <Link className="post-title" link={item.link}>
         <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
       </Link>
 
-      <div>
+      <div className="user-meta">
         {/* If the post has an author, we render a clickable author text. */}
         {author && (
           <StyledLink link={author.link}>
+			  By 
             <AuthorName>
-              By <b>{author.name}</b>
+              <b> {author.name}</b>
             </AuthorName>
           </StyledLink>
         )}
@@ -45,7 +46,7 @@ const Item = ({ state, item }) => {
 
       {/* If the post has an excerpt (short summary text), we render it */}
       {item.excerpt && (
-        <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
+        <Excerpt className="post-content" dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
       )}
     </article>
   );
@@ -55,29 +56,42 @@ const Item = ({ state, item }) => {
 export default connect(Item);
 
 const Title = styled.h1`
-  font-size: 2rem;
-  color: rgba(12, 17, 43);
-  margin: 0;
-  padding-top: 24px;
-  padding-bottom: 8px;
-  box-sizing: border-box;
+	font-size: 22px;
+	margin: 0 0 8px 0;
+	box-sizing: border-box;
+	font-weight: 600;
+
+	:hover {
+		opacity: 0.7;
+	}
 `;
 
 const AuthorName = styled.span`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
+	color: #222222;
+	transition: .3s;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-o-transition: .3s;
 `;
 
 const StyledLink = styled(Link)`
-  padding: 15px 0;
+//   padding: 15px 0;
+  color: #828282;
+  font-size: 14px;
+  font-weight: 300;
+  :hover {
+	  ${AuthorName} {
+		  color: #f47e00;
+	  }
+  }
 `;
 
 const PublishDate = styled.span`
   color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
+  font-size: 14px;
 `;
 
 const Excerpt = styled.div`
   line-height: 1.6em;
-  color: rgba(12, 17, 43, 0.8);
+  color: #787878;
 `;

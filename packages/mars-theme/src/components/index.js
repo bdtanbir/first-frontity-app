@@ -6,8 +6,8 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
-import GithubUsers from "./GithubUsers";
-import { useTransition, animated } from 'react-spring';
+import RoundShape from "./round-shape";
+import LineShape from "./line-shape";
 
 
 /**
@@ -21,12 +21,6 @@ import { useTransition, animated } from 'react-spring';
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
-
-  const transitions = useTransition(state.router.link, {}, {
-    from: { opacity: 0, display: 'none' },
-    enter: { opacity: 1 },
-    leave: { opacity: 0, display: 'none' }
-  });
 
   return (
     <>
@@ -43,29 +37,22 @@ const Theme = ({ state }) => {
 
       {/* Add the header of the site. */}
       <HeadContainer>
+		  <RoundShape />
+
+		  <LineShape />
+
         <Header />
       </HeadContainer>
-
-		<Main>
-			{/* search github username */}
-			<GithubUsers />
-		</Main>
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
       <Main>
-
-
-        {/* {transitions.map(( props, i ) => (
-			<animated.div style={props} key={i}> */}
-				<Switch>
-					<Loading when={data.isFetching} />
-					<List when={data.isArchive} />
-					<Post when={data.isPostType} />
-					<PageError when={data.isError} />
-				</Switch>
-			{/* </animated.div>
-		))} */}
+		<Switch>
+			<Loading when={data.isFetching} />
+			<List when={data.isArchive} />
+			<Post when={data.isPostType} />
+			<PageError when={data.isError} />
+		</Switch>
       </Main>
     </>
   );
@@ -81,8 +68,11 @@ const globalStyles = css`
   }
   a,
   a:visited {
-    color: inherit;
+    // color: inherit;
     text-decoration: none;
+  }
+  h1,h2,h3,h4,h5,h6 {
+	  color: #222222;
   }
 `;
 
@@ -90,15 +80,11 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #ff0000;
+  border-bottom: 1px solid #eee;
+  position: relative;
 `;
 
 const Main = styled.div`
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(
-    180deg,
-    rgba(66, 174, 228, 0.1),
-    rgba(66, 174, 228, 0)
-  );
 `;

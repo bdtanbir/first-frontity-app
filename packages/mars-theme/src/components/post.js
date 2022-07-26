@@ -127,8 +127,9 @@ const DateWrapper = styled.p`
  * selectors to style that HTML.
  */
 const Content = styled.div`
-  color: rgba(12, 17, 43, 0.8);
+  color: #787878;
   word-break: break-word;
+  line-height: 1.6em;
 
   * {
     max-width: 100%;
@@ -142,6 +143,17 @@ const Content = styled.div`
     width: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  ul,
+  ol {
+    li {
+      line-height: 24px;
+      margin-bottom: 6px;
+    }
+  }
+  strong {
+    color: #222222;
   }
 
   figure {
@@ -160,14 +172,14 @@ const Content = styled.div`
 
   blockquote {
     margin: 16px 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-left: 4px solid rgba(12, 17, 43);
+    background-color: rgb(0 0 0 / 5%);
+    border-left: 4px solid rgb(244 125 9);
     padding: 4px 16px;
   }
 
   a {
-    color: rgb(31, 56, 197);
-    text-decoration: underline;
+    color: #f47d00;
+    text-decoration: none;
   }
 
   /* Input fields styles */
